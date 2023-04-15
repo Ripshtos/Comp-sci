@@ -1,4 +1,2 @@
-﻿  Main.cpp
-C:\Users\ohadr\OneDrive\שולחן העבודה\Yossi\Yossi\Yossi\Main.cpp(14,15): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-C:\Users\ohadr\OneDrive\שולחן העבודה\Yossi\Yossi\Yossi\Main.cpp(33,36): warning C4244: '=': conversion from '__int64' to 'int', possible loss of data
+﻿  Routines.cpp
   Yossi.vcxproj -> C:\Users\ohadr\OneDrive\שולחן העבודה\Yossi\Yossi\x64\Debug\Yossi.exe

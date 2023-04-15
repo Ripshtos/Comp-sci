@@ -6,7 +6,7 @@
 const int NUM_ARRAYS = 500;
 const int ARRAY_SIZE = 1000;
 
-int firstN = 0;
+int lastN = 0;
 
 int main()
 {
@@ -14,11 +14,18 @@ int main()
     srand(time(NULL));
 
     // Create 500 arrays using pointers
-    int** arrays = new int* [NUM_ARRAYS];
+    int** arrays = (int ** ) calloc(NUM_ARRAYS,sizeof(int *));
+
+    if (arrays == NULL) 
+    { 
+        cout << "allocation error";
+        return 0;
+    }
+
 
     for (int i = 0; i < NUM_ARRAYS; i++)
     {
-        arrays[i] = new int[ARRAY_SIZE];
+        arrays[i] = (int*)calloc(ARRAY_SIZE, sizeof(int*));
     }
 
     // Fill each array with 1 to n, and then with 1's
@@ -33,14 +40,14 @@ int main()
             *ptr = ptr - arrays[i] + 1;
         }
 
-        // Fill the rest of the cells with 1's using pointers
+        // Fill the rest of the cells with 0's using pointers
         for (int* ptr = arrays[i] + n; ptr < arrays[i] + ARRAY_SIZE; ptr++)
         {
-            *ptr = 1;
+            *ptr = 0;
         }
 
-        firstN = n;
-        cout << "First n value for array " << i << " is " << firstN << endl;
+        lastN = n;
+        cout << "First n value for array " << i << " is " << lastN << endl;
     }
 
     // Print the first 10 cells of the first 10 arrays as a check
@@ -61,18 +68,21 @@ int main()
     
     //checks search 1
     int* lastArr = arrays[499];
-    int index = Search1(lastArr, 1000, firstN);
+    int index = Search1(lastArr, 1000, lastN);
     cout << index << endl;
 
+    //checks search 2
+    index = Search2(lastArr, 1000, lastN);
+    cout << index << endl;
 
 
     // Deallocate the memory used by the arrays
     for (int i = 0; i < NUM_ARRAYS; i++)
     {
-        delete[] arrays[i];
+       free (arrays[i]);
     }
 
-    delete[] arrays; 
+    free(arrays); 
 
     return 0;
 }
