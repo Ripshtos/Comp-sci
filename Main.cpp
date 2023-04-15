@@ -68,11 +68,11 @@ int main()
     
     //checks search 1
     int* lastArr = arrays[499];
-    int index = Search1(lastArr, 1000, lastN);
+    int index = Search1(lastArr, 1000, 999);
     cout << index << endl;
 
     //checks search 2
-    index = Search2(lastArr, 1000, lastN);
+    index = Search2(lastArr, 1000, 999);
     cout << index << endl;
 
 
