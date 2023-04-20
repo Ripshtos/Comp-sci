@@ -75,15 +75,15 @@ int main()
     //checks search 1 
     int* lastArr = arrays[499];
 
-    int index = Search1(lastArr, 1000, 214);
+    int index = Search1(lastArr, 1000, 800);
     cout << index << endl;
 
     //checks search 2
-    index = Search2(lastArr, 1000, 214);
+    index = Search2(lastArr, 1000, 800);
     cout << index << endl;
 
     //checks search 3
-    index = Search3(lastArr, 1000, 214);
+    index = Search3(lastArr, 1000, 800);
     cout << index << endl;
 
     // Deallocate the memory used by the arrays
