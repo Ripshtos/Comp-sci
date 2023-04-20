@@ -50,6 +50,8 @@ int main()
         cout << "First n value for array " << i << " is " << lastN << endl;
     }
 
+
+    /*
     // Print the first 10 cells of the first 10 arrays as a check
     for (int i = 0; i < 10; i++)
     {
@@ -59,6 +61,9 @@ int main()
         }
         cout << endl;
     }
+    */
+
+
 
     // prints the full last array
     for (int i = 0; i < 1000; i++)
@@ -66,22 +71,27 @@ int main()
             cout << arrays[499][i] << " ";
     }
     
-    //checks search 1
+    cout << endl;
+    //checks search 1 
     int* lastArr = arrays[499];
-    int index = Search1(lastArr, 1000, 999);
+
+    int index = Search1(lastArr, 1000, 214);
     cout << index << endl;
 
     //checks search 2
-    index = Search2(lastArr, 1000, 999);
+    index = Search2(lastArr, 1000, 214);
     cout << index << endl;
 
+    //checks search 3
+    index = Search3(lastArr, 1000, 214);
+    cout << index << endl;
 
     // Deallocate the memory used by the arrays
     for (int i = 0; i < NUM_ARRAYS; i++)
     {
        free (arrays[i]);
     }
-
+    
     free(arrays); 
 
     return 0;
