@@ -2,7 +2,14 @@
 #include <cstdlib> // for rand() and srand()
 #include <ctime> // for time()
 
- 
+
+/*
+Name : Ohad Ripshtos
+Id : 323012039
+I did the assignment on my own with the approval of Proffesor Yossi
+*/
+
+
 const int NUM_ARRAYS = 500;
 const int ARRAY_SIZE = 1000;
 
@@ -28,16 +35,19 @@ int main()
         arrays[i] = (int*)calloc(ARRAY_SIZE, sizeof(int*));
     }
 
+
+    int sum = 0;
+
     // Fill each array with 1 to n, and then with 1's
     for (int i = 0; i < NUM_ARRAYS; i++)
     {
         // Generate a random natural integer between 1 and ARRAY_SIZE
         int n = rand() % ARRAY_SIZE + 1;
 
-        // Fill the first n cells of the array with 1 to n using pointers
+        // Fill the first n cells of the array with random numbers
         for (int* ptr = arrays[i]; ptr < arrays[i] + n; ptr++)
         {
-            *ptr = ptr - arrays[i] + 1;
+            *ptr = rand() % ARRAY_SIZE + 1;
         }
 
         // Fill the rest of the cells with 0's using pointers
@@ -45,46 +55,29 @@ int main()
         {
             *ptr = 0;
         }
+        
+        bubbleSort(arrays[i],n);// Sorts the array using bubble sort !
+        
+        int x = rand() % ARRAY_SIZE + 1;
 
-        lastN = n;
-        cout << "First n value for array " << i << " is " << lastN << endl;
+        
+        sum += Search1(arrays[i], 1000, x);
+        sum += Search1(arrays[i], 1000, x);
+        sum += Search1(arrays[i], 1000, x);
     }
 
+    sum = sum / 500;
 
-    /*
-    // Print the first 10 cells of the first 10 arrays as a check
-    for (int i = 0; i < 10; i++)
-    {
-        for (int j = 0; j < 10; j++)
-        {
-            cout << arrays[i][j] << " ";
-        }
-        cout << endl;
-    }
-    */
-
-
+    cout << "in average, the algorithm found the cell index to be : " << sum << endl;
 
     // prints the full last array
     for (int i = 0; i < 1000; i++)
     {
             cout << arrays[499][i] << " ";
     }
-    
+   
+
     cout << endl;
-    //checks search 1 
-    int* lastArr = arrays[499];
-
-    int index = Search1(lastArr, 1000, 800);
-    cout << index << endl;
-
-    //checks search 2
-    index = Search2(lastArr, 1000, 800);
-    cout << index << endl;
-
-    //checks search 3
-    index = Search3(lastArr, 1000, 800);
-    cout << index << endl;
 
     // Deallocate the memory used by the arrays
     for (int i = 0; i < NUM_ARRAYS; i++)
